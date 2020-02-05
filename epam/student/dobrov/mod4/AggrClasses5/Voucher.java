@@ -1,7 +1,5 @@
 package by.epam.student.dobrov.mod4.AggrClasses5;
 
-
-
 /*
 Туристические путевки. Сформировать набор предложений клиенту по выбору туристической путевки различного типа
  (отдых, экскурсии, лечение, шопинг, круиз и т. д.) для оптимального выбора.
@@ -31,6 +29,10 @@ public class Voucher {
         this.price = tourAgent.getPrice();
     }
 
+    public void setDaysQuantity(int daysQuantity) {
+        this.daysQuantity = daysQuantity;
+    }
+
     public double getPrice() {
         price = tourAgent.getPrice() + (daysQuantity * 400);
         return price;
@@ -45,15 +47,4 @@ public class Voucher {
                 "Тип питания: " + tourAgent.getNutritionType().getNutritionType() + "\n" +
                 "Стоимость тура: " + getPrice() + "\n");
     }
-
-
-
-
 }
-/*
- клиенту выдается список страны , он вводит  ее номер , после чего   если данный номер есть в  каталоге стран  то
- страна  присваивается  в ваучер а ее  цена  в гет прайс
-
- сортировка путевок   зависит  от варианта   на который будет ссылаться клиент  ,  т.е. у нас будет метод который принимает  обджект  и  производит
-  сортировку взависимости от того  что было  выбрано , старан или тур  или
- */

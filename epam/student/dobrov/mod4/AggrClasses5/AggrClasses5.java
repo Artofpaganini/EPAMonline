@@ -9,7 +9,6 @@ import java.util.*;
  */
 public class AggrClasses5 {
 
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -18,90 +17,98 @@ public class AggrClasses5 {
         TransportType[] transportTypes = TransportType.values();
         NutritionType[] nutritionTypes = NutritionType.values();
 
-        TourAgent tourAgent = new TourAgent(countries, tourTypes, transportTypes, nutritionTypes);
+        int daysDesignation = 0;
 
+        TourAgent tourAgent = new TourAgent(countries, tourTypes, transportTypes, nutritionTypes);
 
         tourAgent.showInfo(countries);
         System.out.println("Сделайте выбор страны: ");
-        String designationCountry1 = sc.nextLine();
-        tourAgent.selectCountry(designationCountry1);
+        tourAgent.selectCountry(checkDesignation());
 
         System.out.println();
 
         tourAgent.showInfo(tourTypes);
         System.out.println("Сделайте выбор тура: ");
-        String designationTour1 = sc.nextLine();
-        tourAgent.selectTour(designationTour1);
-
+        tourAgent.selectTour(checkDesignation());
         System.out.println();
 
         tourAgent.showInfo(transportTypes);
         System.out.println("Сделайте выбор транспорта: ");
-        String designationTransport1 = sc.nextLine();
-        tourAgent.selectTransport(designationTransport1);
+        tourAgent.selectTransport(checkDesignation());
 
         System.out.println();
 
         tourAgent.showInfo(nutritionTypes);
         System.out.println("Сделайте выбор типа питания: ");
-        String designationNutrition1 = sc.nextLine();
-        tourAgent.selectNutrition(designationNutrition1);
+        tourAgent.selectNutrition(checkDesignation());
 
         System.out.println();
 
         System.out.println("Введите кол-во дней отдыха: ");
-        int daysQuantity = sc.nextInt();
-        Voucher voucher = new Voucher(tourAgent, daysQuantity);
+        Voucher voucher = new Voucher(tourAgent, checkDaysDesignation(daysDesignation));
         System.out.println(voucher.toString());
 
 
         //Сортировка цен по возрастанию
-
-        // как сделать  так что бы  вводить значение через сканер  постоянно и за счет одного стринга  а не  создавать его постоянно
         System.out.println("Сортировка по возрастанию цен: ");
-// почему сканер  перепрыгивает в месте где  начинается новый переменные
+
+//        sc.nextLine();
 
         tourAgent.sortCountries();
         tourAgent.showInfo(countries);
         System.out.println("Сделайте выбор страны: ");
-        String designationCountry2 = sc.nextLine();
-        tourAgent.selectCountry(designationCountry2);
+        tourAgent.selectCountry(checkDesignation());
 
         System.out.println();
 
         tourAgent.sortTour();
         tourAgent.showInfo(tourTypes);
         System.out.println("Сделайте выбор тура: ");
-        String designationTour2 = sc.nextLine();
-        tourAgent.selectTour(designationTour2);
+        tourAgent.selectTour(checkDesignation());
 
         System.out.println();
 
         tourAgent.sortTransport();
         tourAgent.showInfo(transportTypes);
         System.out.println("Сделайте выбор транспорта: ");
-        String designationTransport2 = sc.nextLine();
-        tourAgent.selectTransport(designationTransport2);
+        tourAgent.selectTransport(checkDesignation());
 
         System.out.println();
 
         tourAgent.sortNutrition();
         tourAgent.showInfo(nutritionTypes);
         System.out.println("Сделайте выбор типа питания: ");
-        String designationNutrition2 = sc.nextLine();
-        tourAgent.selectNutrition(designationNutrition2);
+        tourAgent.selectNutrition(checkDesignation());
 
         System.out.println();
 
         System.out.println("Введите кол-во дней отдыха: ");
-        daysQuantity = sc.nextInt();
+        voucher.setDaysQuantity(checkDaysDesignation(daysDesignation));
         System.out.println(voucher.toString());
 
     }
 
+    public static String checkDesignation() {
+        Scanner sc = new Scanner(System.in);
+        String designation = new String();
+        if (designation.isEmpty()) {
+            designation = sc.nextLine();
+        } else {
+            sc.nextLine();
+        }
+        return designation;
+    }
+
+    public static int checkDaysDesignation(int daysDesignation) {
+        Scanner sc = new Scanner(System.in);
+
+        if (daysDesignation == 0) {
+            daysDesignation = sc.nextInt();
+        } else {
+            sc.nextInt();
+            daysDesignation = sc.nextInt();
+        }
+        return daysDesignation;
+    }
 }
 
-/*
- клиенту выдается список страны , он вводит  ее номер , после чего   если данный номер есть в  каталоге стран  то
- страна  присваивается  в ваучер а ее  цена  в гет прайс
- */

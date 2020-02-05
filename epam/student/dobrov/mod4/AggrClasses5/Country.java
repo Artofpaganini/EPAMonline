@@ -10,9 +10,6 @@ public enum Country {
     private String countryName;
     private double countryPrice;
 
-
-
-
     Country(String countryName, double countryPrice) {
         this.countryName = countryName;
         this.countryPrice = countryPrice;
@@ -29,12 +26,7 @@ public enum Country {
 
     @Override
     public String toString() {
-        return String.format("Страна:" +  " - " + countryName + ", Стоимость: " + countryPrice);
+        return String.format("Страна:" + " - " + countryName + ", Стоимость: " + countryPrice);
     }
 
-    public  void showInfo (){
-        for(Country i : Country.values()){
-            System.out.println(i.toString());
-        }
-    }
 }
