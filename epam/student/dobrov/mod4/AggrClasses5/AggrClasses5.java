@@ -52,7 +52,7 @@ public class AggrClasses5 {
         //Сортировка цен по возрастанию
         System.out.println("Сортировка по возрастанию цен: ");
 
-//        sc.nextLine();
+
 
         tourAgent.sortCountries();
         tourAgent.showInfo(countries);
